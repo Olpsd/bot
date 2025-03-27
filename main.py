@@ -35,7 +35,7 @@ async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reply = f"📊 Всего записей: {total_msgs}\n\n📝 Последние записи:\n" + ''.join(last_entries)
     await update.message.reply_text(reply)
 
-aasync def main():
+async def main():
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("stats", stats))
