@@ -35,7 +35,7 @@ async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reply = f"📊 Всего записей: {total_msgs}\n\n📝 Последние записи:\n" + ''.join(last_entries)
     await update.message.reply_text(reply)
 
-async def main():
+aasync def main():
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("stats", stats))
@@ -45,10 +45,13 @@ async def main():
 
 import asyncio
 
-async def runner():
-    await main()
-
 if __name__ == "__main__":
-    asyncio.run(runner())
+    loop = asyncio.get_event_loop()
+    try:
+        loop.create_task(main())
+        loop.run_forever()
+    except KeyboardInterrupt:
+        pass
+
 
 
