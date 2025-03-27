@@ -43,8 +43,12 @@ async def main():
     print("Бот запущен. Ждёт сообщений... 🟢")
     await app.run_polling()
 
+import asyncio
+
+async def runner():
+    await main()
+
 if __name__ == "__main__":
-    import asyncio
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    asyncio.run(runner())
+
 
